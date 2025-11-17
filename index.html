@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Royal Scroll of Princess Day Wishes</title>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    body {
+      font-family: 'Brush Script MT', cursive;
+      background-color: #f4e4bc;
+      color: #8b4513;
+      margin: 0;
+      padding: 20px;
+      background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .rolled-scroll {
+      width: 100px;
+      height: 100px;
+      background-color: #d2b48c;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5em;
+      color: #8b4513;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      text-align: center;
+      user-select: none;
+    }
+    .rolled-scroll:hover {
+      transform: scale(1.1);
+    }
+    .swiper-container {
+      max-width: 800px;
+      width: 100%;
+      border: 2px solid #d2b48c;
+      border-radius: 10px;
+      background-color: rgba(255, 248, 220, 0.9);
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      transform: scale(0.1) rotate(45deg);
+      opacity: 0;
+      transition: all 1s ease-in-out;
+      display: none;
+    }
+    .swiper-container.open {
+      transform: scale(1) rotate(0deg);
+      opacity: 1;
+      display: block;
+    }
+
+    /* CENTERING SWIPER SLIDES */
+    .swiper-slide {
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+      min-height: 80vh;
+    }
+
+    h1, h2 {
+      color: #daa520;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    h2 {
+      font-size: 1.6em;
+    }
+
+    .blank-page {
+      max-width: 700px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 30px;
+      border: 1px dashed #8b4513;
+      background-color: #fff8dc;
+      font-style: italic;
+      font-size: 1.1em;
+      line-height: 1.5em;
+      white-space: pre-line;
+      border-radius: 10px;
+      box-sizing: border-box;
+      color: #8b4513;
+      text-align: center;
+      user-select: text;
+    }
+
+    .emoji {
+      font-size: 1.5em;
+    }
+
+    .swiper-pagination {
+      bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="rolled-scroll" id="rolledScroll">
+    📜<br />Tap to Unfurl the Scroll!
+  </div>
+  <div class="swiper-container" id="swiperContainer">
+    <div class="swiper-wrapper">
+      <!-- Page 1 -->
+      <div class="swiper-slide">
+        <h1>Royal Scroll of Princess Day Wishes</h1>
+        <p style="font-style: italic;">*(Open gently to find heartfelt wishes!)*</p>
+        <h2>Page 1: A Warm Welcome</h2>
+        <p>
+          Dear Princess, today is your special day! I’m so happy to celebrate you — the kindest and brightest person I know. 
+          May your day be full of smiles, laughter, and all the little joys you deserve.  
+          You’re truly one in a million. Shine bright and enjoy every moment!
+          <span class="emoji">🌟👑</span>
+        </p>
+      </div>
+
+      <!-- Page 2 (Envoy part removed) -->
+      <div class="swiper-slide">
+        <h2>Page 2: A Royal Message</h2>
+        <p>*(Imagine this message carried by a royal envoy to you, the princess!)*</p>
+        <p>
+          Your kind heart and bright spirit inspire everyone around you.  
+          Today, receive this scroll as a symbol of all the love and admiration you deserve.  
+          May your day be magical, just like you.
+        </p>
+      </div>
+
+      <!-- Page 3 -->
+      <div class="swiper-slide">
+        <h2>Page 3: Your Personal Message</h2>
+        <div class="blank-page">
+👑 ROYAL DECREE: NATIONAL PRINCESS DAY PROCLAMATION 👑
+
+Hear ye, hear ye!  
+On this sacred 18th of November, let it be declared throughout the kingdom  
+that my dearest Bestie is officially crowned ROYAL HIGHNESS of unmatched grace and glory!
+
+Your kindness softens hearts, your bravery inspires kingdoms,  
+and your sparkling wit outshines every jewel in the royal treasury.
+
+✨ BY ORDER OF THIS DECREE:  
+You shall receive endless pampering, enjoy a feast befitting royalty,  
+and wear your crown with unshakable confidence.  
+All doubts, worries, and stress are hereby banished from your realm for the entire day! 👑
+
+Your reign is cherished, your presence is magical,  
+and my loyalty to your royalness is eternal.
+
+HAPPY NATIONAL PRINCESS DAY!  
+With royal regard,  
+Mr.Hollow_01
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    const rolledScroll = document.getElementById('rolledScroll');
+    const swiperContainer = document.getElementById('swiperContainer');
+
+    let swiper;
+    rolledScroll.addEventListener('click', () => {
+      swiperContainer.classList.add('open');
+      rolledScroll.style.display = 'none';
+
+      swiper = new Swiper('.swiper-container', {
+        direction: 'horizontal',
+        rtl: true, // swiping right goes to next page
+        loop: false,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        spaceBetween: 10,
+        slidesPerView: 1,
+      });
+    });
+
+    swiperContainer.addEventListener('click', (e) => {
+      if (e.target === swiperContainer) {
+        swiperContainer.classList.remove('open');
+        rolledScroll.style.display = 'flex';
+        if (swiper) swiper.destroy();
+      }
+    });
+  </script>
+</body>
+</html>
